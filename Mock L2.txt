@@ -1,0 +1,296 @@
+﻿Mock L2
+1. Devops Workflow (Code to Deployment : Git -> Build service -> deployment -> Servers)
+2. Offline Installation of packages using Yum
+3. Explain AWS CICD implementation
+4. Shell scripting scenarios ( bash scripts, awk, sed, for, if else)
+Ans: # bash scripts := It is used to automate repetitive tasks on Linux filesystem
+     
+     # awk := It is use for filtering the the content from the file.
+
+	eg: * To primt only the first column with delimiteras':'
+		awk -f ":" '{print $1}'/etc/passwd (/etc/file is the path or file location from were we want the output)
+
+	    * To print first 6 lines
+		awk 'NR<6' /etc/passwd (/etc/file is the path or file location from were we want the output)
+	
+	    * To print lines from 5 to 10 
+		awk 'NR==5,NR==10'/etc/passwd (/etc/file is the path or file location from were we want the output)
+
+	    * To print range of lines
+		awk -f ":"'NR>0 && NR<6 {print$1}' /etc/passwd (/etc/file is the path or file location from were we want the output)
+
+     # Sed := To replace some comntain in shell script dynamically we use 'sed'
+
+	eg: sed 's/:/./g' (previous file name) > (new file name) (in this is replace ':' by '.')
+
+     # For loop:= A 'for loop' is a bash programming language statement which allows code to be repeatedly executed.
+	eg:= #!/bin/sh
+
+             for var in 0 1 2 3 4 5 6 7 8 9
+	     do
+             	echo $var
+             done
+
+            Upon execution, you will receive the following result − 0
+								    1
+								    2
+								    3
+								    4
+								    5
+								    6
+								    7
+								    8
+								    9
+
+5. Automation configuration : Ansible
+7. Git scenarios : branching, merging strategy, Pull Requests , git best practices, ssh and https authentication.
+	# Branching := A branch represents an independent line of development.(or parallel devlopment.) 
+	# merging strategy := 
+8. Firewalld configuration scenarios
+9. Cloudformation Scenarios and Implementation ( Sections, Intrinsic Functions, Output, export, Drift Detection)
+10. Devops Best Practices that are followed.
+	Using Env Variables, parameters to make code generic, no storing sensitive information in code.
+11. Jenkins setup and CICD.
+	Jenkins Credentials.
+
+IAC Automation
+Application Deployment Automation
+
+shell script -> csv file sg inbound:
+filename
+region
+security group name
+Command Line Arguments: $1, $2, $3
+
+*How to use command line arguments in a Script?
+Ans: Command line arguments (also known as positional parameters) are the arguments specified at the command prompt with a command or script to be executed.
+     "$1"= it represent postional parameter.
+ Example: #!/bin/bash
+	  echo "first number you have entered"$1
+	  echo "second number you have entered"$2 	
+
+*How to check if my previously executed command was successful?
+Ans: By command :- "echo $?" and if output is '0' it is successful.
+
+*What is Shell Redirection Operators?
+Ans:- Each stream uses redirection commands. Single bracket '>' or double bracket '>>' can be used to redirect standard output.
+      '>'= it replace the previous output with new output
+      '>>' = it append the output (mean add another output)
+
+
+    The bash shell has three standard streams in I/O redirection:
+
+	*standard input (stdin) : The stdin stream is numbered as stdin (0). The bash shell takes input from stdin. By default, keyboard is used as input.
+	*standard output (stdout) : The stdout stream is numbered as stdout (1). The bash shell sends output to stdout. Output goes to display.
+	*standard error (stderr) : The stderr stream is numbered as stderr (2). The bash shell sends error message to stderr. Error message goes to display.
+
+
+*What is crontab in Linux, how to set a cronjob?
+Ans:- Crontab files can be used to automate backups, system maintenance and other repetitive tasks. 
+
+	Each line of a crontab file represents a job, and looks like this:
+
+# ┌───────────── minute (0 - 59)
+# │ ┌───────────── hour (0 - 23)
+# │ │ ┌───────────── day of the month (1 - 31)
+# │ │ │ ┌───────────── month (1 - 12)
+# │ │ │ │ ┌───────────── Days of the week range: 0 – 7. Starting from Monday, 0 or 7 represents Sunday;
+# │ │ │ │ │                                   
+# │ │ │ │ │
+# │ │ │ │ │
+# * * * * * <command to execute>
+
+
+
+
+*How to Debug a Shell Script? 
+Ans:-bash -x script.sh
+
+*How to find all the files modified in the last 5 days and save the result in a text file?
+Ans:- ctime , mtime , atime for files
+
+*I want to install a package and is failing, what are the troubleshooting steps that you will follow
+Ans:- *Check Whether Required Installed Packages Are Available.
+      *Check Whether the Packages You Want to Install Are Available.
+      *Check Whether the Packages You Want to Install Are Installable in This Image.
+      *Check which version of the pkg:/entire incorporation package is installed.
+
+*which port curl command connects, and on which port u get the response
+
+*How to kill process, telnet, check load on server, netstat, nmap, nc commands
+Ans:- * To kill process in Linux with PID: kill -9 pid.
+      * In Linux, the telnet command is used to create a remote connection with a system over a TCP/IP network.
+      * By "Uptime" command check load on server.
+      * #netstat -r     = Display routing table
+        # netstat -ie   = The equivalent to default ifconfig command to list all active network interfaces
+        # netstat -antc	= Continuously monitor all TCP connection. use -u for UDP.
+        # netstat -ltp	= Display all open TCP ports along with PID and program. 
+      * Nmap is Linux command-line tool for network exploration and security auditing	
+      * nc command = On Unix-like operating systems, the nc command runs Netcat, a utility for sending raw data over a network connection.
+
+
+
+*What all things ssh needs for authentication
+Ans:- To authenticate using SSH keys, a user must have an SSH key pair on their local computer.
+
+
+Linux scenario questions :
+- Command to find all files in a directory with more than 1GB
+Ans:- find / -type f -size +1G.
+
+- get the size of all files and folders in a particular directory
+Ans:- Use 'ls' command for files also ls-l,ls-lh  
+      use 'du' command for directories also du -sh, du -ch,
+     
+      	
+- list the files that are modified in the last 3 days.
+Ans:-  -mtime -3: It will find all files that were modified in the last 3 days.
+       -mtime +3: This will find all files that were modified 3 days ago
+
+- check process run by a particular user
+Ans:- ps -u {USERNAME}
+
+- how to check cpu utilization and memory utilization in linux
+Ans:- 'sar' Command to Show CPU Utilization.
+      'free' command for memory utilization.
+
+- zip files in linux older than 1 month.
+
+DevOps
+▪ What is Inventory and where the inventory file?
+Ans:- The Ansible inventory file defines the hosts and groups of hosts upon which commands, modules, and tasks in a playbook operate.
+       The default location for the inventory file is " /etc/ansible/hosts ".
+
+▪ What is Ansible Role?
+Ans:- Ansible roles allow you to develop reusable automation components by grouping and encapsulating related automation artifacts,
+      like configuration files, templates, tasks, and handlers. Because roles isolate these components,it's easier to reuse them and share them with other people.
+
+▪ What is Module?
+Ans:- A module is a reusable, standalone script that Ansible runs on your behalf, either locally or remotely. 
+      Modules interact with your local machine, an API, 
+      or a remote system to perform specific tasks like changing a database password or spinning up a cloud instance.
+
+
+ 
+▪ How to define inventory in Ansible
+
+▪ parameters in ansible.cfg
+Ans:- we provide permission for inventory file by uncommenting the '#' function from "inventory= /etc/ansible/hosts" and "sudo-user=root"
+
+▪ Ansible configuration file precedence.
+Ans:- Installation of Ansible provides us a default /etc/ansible/ansible.cfg configuration file,in
+      which we can make various settings like the default user with which playbook should run on he remote server and the privilege mode of that user.
+▪ Ansible variable precedence
+
+▪ CICD Pipeline?
+Ans:- A CI/CD pipeline is a series of steps that must be performed in order to deliver a new version of software.
+      A CI/CD pipeline introduces monitoring and automation to improve the process of application development, 
+      particularly at the integration and testing phases, as well as during delivery and deployment.
+
+▪ Dockerfile?
+Ans:- A Dockerfile is a file used to build a Docker image to your specifics.With a Dockerfile constructed, 
+      you could then easily build the same image over and over,without having to walk through the process manually.
+
+▪ Can we use two from in Dockerfile?
+Ans:- With multi-stage builds, you use multiple FROM statements in your Dockerfile.
+
+▪ Diff between ADD and COPY commmand?
+Ans:- COPY copies a file/directory from your host to your image.
+      ADD copies a file/directory from your host to your image, but can also fetch remote URLs, extract TAR files, etc...
+      Use COPY for simply copying files and/or directories into the build context.
+      Use ADD for downloading remote resources, extracting TAR files, etc..
+
+
+
+ 
+      
+▪ Diff between CMD and entrypoint command?
+Ans:- CMD sets default command and/or parameters, which can be overwritten from command line when docker container runs.
+      ENTRYPOINT command and parameters will not be overwritten from command line. Instead, all command line arguments will be added after ENTRYPOINT parameters.
+
+
+▪ Write the shellscript for count of IP Address from file?
+	- nginx , httpd => /var/log/nginx/access.log 
+						/var/log/nginx/error.log
+
+▪ List of open ports?
+Ans;- Enter the command. netstat -a. Press Enter on the keyboard. The list of open ports will be displayed.
+
+▪ What does nslookup and netstat?
+Ans;- The nslookup := command queries internet domain name servers in two modes. 
+      Interactive mode allows you to query name servers for information about various hosts and domains, or to print a list of the hosts in a domain. 
+      In noninteractive mode, the names and requested information are printed for a specified host or domain.
+ 
+     
+      The network statistics ( netstat ) command is a networking tool used for troubleshooting and configuration, 
+      that can also serve as a monitoring tool for connections over the network. 
+      Both incoming and outgoing connections, routing tables, port listening, and usage statistics are common uses for this command.
+
+
+ ▪ What is process? How to kill process? How to get PID?
+▪ Whta is the use of du command?
+Ans;- is used to estimate file space usage
+  
+
+▪ Modules? Ansible playbook
+
+
+▪ I want to monitor OS metrics and performance counters of my amazon linux instance. 
+Ans:- By using cloudwatch metrics.
+
+▪ How to configure custom cloudwatch metrics.
+
+▪ How to access EC2 instance, if pem file is lost?
+Ans:- Accessing the EC2 instance even if you loose the pem file is rather easy.
+
+     1.First, create a new instance by creating new access file, call it 'helper' instance with same region and VPC as of the lost pem file instance.
+
+     2.Now stop the lost pem file instance. Remember not to terminate instance but to stop it.
+
+     3.Go to EBS volumes, select the root volume of the lost pem file instance and detach.
+
+     4.Now again select the detached volume and this time you have to attach this volume to helper instance which we created before. Since helper instance already has a root volume by default as /dev/sda1, the newly attached volume will be secondary(eg: /dev/sdf).
+
+     5.Login to your helper instance with its pem file.
+
+     6.Execute below commands:
+
+        # mount /dev/xvdf1 /mnt
+        # cp /root/.ssh/authorized_keys /mnt/root/.ssh/
+        # umount /mnt
+     7.Detach the secondary volume from helper instance.
+
+     8.Again attach the volume back to our recovery instance. Start the instance. Terminate the helper instance.
+
+
+Python script using Boto3
+1)Write python script for send an email notification When a specific Instance(s) stops in the production environment
+2)Write Python script to find unused volume and send an email notification
+3)Write python script to find unused EIPs
+
+How to automatically tag EC2 instance after its launched and if its not tagged?  
+(Ans:  create cloudwatch event pattern using API Call via CloudTrail and trigger lambda function, 
+write python code for creating tag in the lambda function)
+
+Logging:
+VPC Flow Logs -> S3
+CloudTrail Logs -> S3
+ELB Logs -> S3
+
+Query above logs : Athena
+
+what types of error codes find if you enable ELB LOGS, What is meaning of what error code, 
+What is 2xx ? What is 3xx? what is 4xx? What is 5xx?
+
+Github:
+Dockerfile: Commands to create image
+Ans:- docker build -t (newimage name).
+
+Jenkinsfile: stages ( Build, Deploy)
+deployment.yaml
+
+Jenkins 
+Build -> Docker build and push to ECR, GCR, Docker Hub ( authentication details with Jenkins Credentials)
+Deploy -> remote execution of kubernetes node (kubectl create deployments -f deployment.yaml)
+
+kubectl create deployments -f deployment.yaml
