@@ -1,4 +1,4 @@
-﻿Mock L2
+Mock L2
 1. Devops Workflow (Code to Deployment : Git -> Build service -> deployment -> Servers)
 2. Offline Installation of packages using Yum
 3. Explain AWS CICD implementation
@@ -45,7 +45,8 @@ Ans: # bash scripts := It is used to automate repetitive tasks on Linux filesyst
 5. Automation configuration : Ansible
 7. Git scenarios : branching, merging strategy, Pull Requests , git best practices, ssh and https authentication.
 	# Branching := A branch represents an independent line of development.(or parallel devlopment.) 
-	# merging strategy := 
+	# merging strategy := Git Merge Strategies. A merge happens when combining two branches
+
 8. Firewalld configuration scenarios
 9. Cloudformation Scenarios and Implementation ( Sections, Intrinsic Functions, Output, export, Drift Detection)
 10. Devops Best Practices that are followed.
